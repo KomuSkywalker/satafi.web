@@ -1,0 +1,279 @@
+/* =========================================
+   Renk Paleti (Saf Minimalizm) 
+   ========================================= */
+:root {
+    --bg-base: #000000;         /* Saf Siyah */
+    --bg-surface: #0a0a0a;      /* Kart arka planları */
+    --bg-elevated: #151515;     /* Hafif yükseltilmiş gri */
+    --bg-hover: #1f1f1f;        
+    --border-color: rgba(255, 255, 255, 0.1); 
+    --border-highlight: rgba(255, 255, 255, 0.25); 
+    --text-primary: #ffffff;    /* Saf Beyaz */
+    --text-secondary: #888888;  /* Orta Gri */
+    --navbar-bg: rgba(0, 0, 0, 0.8);
+}
+
+/* =========================================
+   Temel Sıfırlama ve Tipografi 
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================
+   Üst Navigasyon Barı 
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 60px; /* Menüyü biraz daha ferahlattık */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.nav-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-text {
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+}
+
+.brand-text b {
+    font-weight: 700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* =========================================
+   Ana Sayfa (Kaydırmasız - Tek Ekran)
+   ========================================= */
+.home-wrapper {
+    height: 100vh; /* Tam ekran yüksekliği */
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Scroll'u kesin olarak engeller */
+}
+
+.home-hero {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.home-hero h1 {
+    font-size: 72px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.home-hero p {
+    font-size: 24px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Mobil Uyum (Ana Sayfa) */
+@media (max-width: 768px) {
+    .home-hero h1 { font-size: 48px; }
+    .home-hero p { font-size: 18px; }
+}
+
+/* =========================================
+   Alt Sayfalar ve Vitrin Sayfası
+   ========================================= */
+.subpage-content {
+    padding-top: 150px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.subpage-content.narrow {
+    max-width: 700px;
+}
+
+.intro-section h1 {
+    font-size: 64px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Vitrin Grid Yapısı */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 50px 20px;
+}
+
+.project-card {
+    background: var(--bg-surface);
+    padding: 60px 40px;
+    border-radius: 12px; /* Keskin hatlara geçiş (Apple yuvarlaklığından uzak) */
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid var(--border-color);
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+.project-card:hover {
+    background: var(--bg-hover);
+    transform: translateY(-5px); /* Büyüme yerine hafif yukarı kalkma */
+}
+
+.project-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.project-card p {
+    color: var(--text-secondary);
+}
+
+/* Vitrin Kart İçi Görseller */
+.project-icon {
+    width: 88px;
+    height: 88px;
+    border-radius: 12px; /* Keskin köşelere uyum */
+    margin-bottom: 24px;
+    object-fit: cover;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Vitrin Sekmeleri */
+.tab-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.tab-button {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-highlight);
+    padding: 10px 24px;
+    border-radius: 4px; /* Keskin butonlar */
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.tab-button:hover {
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.tab-button.active {
+    background: var(--text-primary);
+    color: var(--bg-base);
+    border-color: var(--text-primary);
+}
+
+.filter-item {
+    display: none;
+}
+
+.filter-item.show {
+    display: block;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   Hakkımızda ve İletişim Metinleri 
+   ========================================= */
+.philosophy p {
+    font-size: 22px;
+    color: var(--text-primary);
+    opacity: 0.8;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contact-section h2 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin-bottom: 40px;
+}
+
+.contact-links p {
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--text-primary); /* Mavi yerine sade beyaz/gri uyumu */
+    margin-bottom: 15px;
+    transition: opacity 0.3s;
+}
+
+.contact-links p:hover {
+    opacity: 0.7;
+}
