@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitrin - Satafi Studio</title>
+    <meta name="description" content="Satafi Studio'nun üretimleri, uygulamaları ve iş yazılımları.">
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="style.css">
 
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
 
     <meta property="og:title" content="Vitrin - Satafi Studio">
     <meta property="og:description" content="Satafi Studio'nun üretimleri, uygulamaları ve iş yazılımları. Yazılım ve tasarımda Satafi ekolü.">
@@ -21,69 +24,107 @@
 </head>
 <body>
 
-    <header class="navbar">
+    <header class="navbar" data-navbar>
         <div class="nav-container">
-            <a href="index.html" class="brand-wrapper">
-                <img src="assets/satafi-logo.png" alt="Satafi Logo" class="nav-logo">
+            <a href="index.html" class="brand-wrapper" aria-label="Satafi Studio ana sayfa">
+                <img src="assets/satafi-logo.png" alt="" class="nav-logo">
                 <div class="brand-text"><b>Satafi</b> Studio</div>
             </a>
-            <nav>
+            <nav aria-label="Ana menü">
                 <ul class="nav-links">
-                    <li><a href="vitrin.html" style="opacity: 1; font-weight: 500;">Vitrin</a></li>
+                    <li><a href="vitrin.html" aria-current="page">Vitrin</a></li>
                     <li><a href="hakkimizda.html">Hakkımızda</a></li>
                     <li><a href="iletisim.html">İletişim</a></li>
                 </ul>
             </nav>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" data-nav-toggle>
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
-    <main class="subpage-content">
-        <section class="intro-section">
-            <h1>Üretimlerimiz.</h1>
-        </section>
-
-        <div class="tab-container">
-            <button class="tab-button active" onclick="filterSelection(event, 'uygulamalar')">Uygulamalar</button>
-            <button class="tab-button" onclick="filterSelection(event, 'web-servisleri')">Web Servisleri</button>
-            <button class="tab-button" onclick="filterSelection(event, 'is-yazilimlari')">İş Yazılımları</button>
+    <main class="page">
+        <div class="page-head" data-reveal>
+            <span class="eyebrow">Vitrin</span>
+            <h1 class="page-title">Üretimlerimiz<span class="dim">.</span></h1>
+            <p class="page-lead">Fikri, satır satır işlenmiş bir bütüne dönüştürdüğümüz seçili çalışmalar.</p>
         </div>
 
-        <div class="grid-container">
-            
-            <a href="https://apps.apple.com/tr/app/ezan-saati/id6475355411" target="_blank" class="project-card filter-item uygulamalar">
-                <img src="assets/ezan-saati.png" alt="Ezan Saati" class="project-icon">
-                <h3>Ezan Saati</h3>
-                <p>Karmaşadan uzak, modern ve sade ibadet asistanı.</p>
-            </a>
+        <div class="container">
+            <div class="tab-container" data-reveal>
+                <button class="tab-button active" onclick="filterSelection(event, 'uygulamalar')">Uygulamalar</button>
+                <button class="tab-button" onclick="filterSelection(event, 'web-servisleri')">Web Servisleri</button>
+                <button class="tab-button" onclick="filterSelection(event, 'is-yazilimlari')">İş Yazılımları</button>
+            </div>
 
-            <a href="#" class="project-card filter-item uygulamalar">
-                <img src="assets/raccord.png" alt="Raccord" class="project-icon">
-                <h3>Raccord</h3>
-                <p>Sinefiller için sinematik bir sosyal eşleşme deneyimi.</p>
-            </a>
+            <div class="grid-container" data-reveal>
 
-            <a href="#" class="project-card filter-item web-servisleri">
-                <img src="assets/mitos.png" alt="MITOS CRM" class="project-icon">
-                <h3>MITOS Emlak CRM</h3>
-                <p>Emlak profesyonelleri için uçtan uca akıllı yönetim sistemi.</p>
-            </a>
+                <a href="https://apps.apple.com/tr/app/ezan-saati/id6475355411" target="_blank" rel="noopener" class="project-card filter-item uygulamalar">
+                    <div class="card-top">
+                        <img src="assets/ezan-saati.png" alt="Ezan Saati" class="project-icon">
+                        <span class="card-index">01</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Uygulama · iOS</div>
+                        <h3>Ezan Saati <span class="arrow">↗</span></h3>
+                        <p>Karmaşadan uzak, modern ve sade ibadet asistanı.</p>
+                    </div>
+                </a>
 
-            <a href="#" class="project-card filter-item web-servisleri">
-                <img src="assets/nadar.png" alt="Nadar" class="project-icon">
-                <h3>Nadar: Sanal Kartvizit</h3>
-                <p>Geleceğin dijital kimliği ile ağınızı tek dokunuşla kurun.</p>
-            </a>
+                <a href="#" class="project-card filter-item uygulamalar">
+                    <div class="card-top">
+                        <img src="assets/raccord.png" alt="Raccord" class="project-icon">
+                        <span class="card-index">02</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Uygulama · Sosyal</div>
+                        <h3>Raccord <span class="arrow">↗</span></h3>
+                        <p>Sinefiller için sinematik bir sosyal eşleşme deneyimi.</p>
+                    </div>
+                </a>
 
-            <a href="#" class="project-card filter-item is-yazilimlari">
-                <img src="assets/remy.png" alt="Remy Robot" class="project-icon">
-                <h3>Remy Robot</h3>
-                <p>Operasyonel süreçleri otonom hale getiren akıllı iş ortağınız.</p>
-            </a>
+                <a href="#" class="project-card filter-item web-servisleri">
+                    <div class="card-top">
+                        <img src="assets/mitos.png" alt="MITOS CRM" class="project-icon">
+                        <span class="card-index">03</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Web Servisi · CRM</div>
+                        <h3>MITOS Emlak CRM <span class="arrow">↗</span></h3>
+                        <p>Emlak profesyonelleri için uçtan uca akıllı yönetim sistemi.</p>
+                    </div>
+                </a>
 
+                <a href="#" class="project-card filter-item web-servisleri">
+                    <div class="card-top">
+                        <img src="assets/nadar.png" alt="Nadar" class="project-icon">
+                        <span class="card-index">04</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">Web Servisi · Dijital Kimlik</div>
+                        <h3>Nadar: Sanal Kartvizit <span class="arrow">↗</span></h3>
+                        <p>Geleceğin dijital kimliği ile ağınızı tek dokunuşla kurun.</p>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card filter-item is-yazilimlari">
+                    <div class="card-top">
+                        <img src="assets/remy.png" alt="Remy Robot" class="project-icon">
+                        <span class="card-index">05</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tag">İş Yazılımı · Otomasyon</div>
+                        <h3>Remy Robot <span class="arrow">↗</span></h3>
+                        <p>Operasyonel süreçleri otonom hale getiren akıllı iş ortağınız.</p>
+                    </div>
+                </a>
+
+            </div>
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="site-footer" data-footer></footer>
 
+    <script src="script.js"></script>
 </body>
 </html>

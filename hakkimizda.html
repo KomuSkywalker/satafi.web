@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hakkımızda - Satafi Studio</title>
+    <meta name="description" content="Sade Tasarım Fikirleri: Karmaşadan uzaklaşma arzusunun doğrudan yansıması. Eksilterek inşa ediyoruz.">
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="style.css">
 
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -22,39 +24,59 @@
 </head>
 <body>
 
-    <header class="navbar">
+    <header class="navbar" data-navbar>
         <div class="nav-container">
-            <a href="index.html" class="brand-wrapper">
-                <img src="assets/satafi-logo.png" alt="Satafi Logo" class="nav-logo">
+            <a href="index.html" class="brand-wrapper" aria-label="Satafi Studio ana sayfa">
+                <img src="assets/satafi-logo.png" alt="" class="nav-logo">
                 <div class="brand-text"><b>Satafi</b> Studio</div>
             </a>
-            <nav>
+            <nav aria-label="Ana menü">
                 <ul class="nav-links">
                     <li><a href="vitrin.html">Vitrin</a></li>
-                    <li><a href="hakkimizda.html" style="opacity: 1; font-weight: 500;">Hakkımızda</a></li>
+                    <li><a href="hakkimizda.html" aria-current="page">Hakkımızda</a></li>
                     <li><a href="iletisim.html">İletişim</a></li>
                 </ul>
             </nav>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" data-nav-toggle>
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
-    <main class="subpage-content">
-        <section class="intro-section">
-            <h1>Biz kimiz?</h1>
-            <p>Satafi, karmaşadan uzaklaşma arzusunun doğrudan bir yansımasıdır.</p>
-        </section>
+    <main class="page">
+        <div class="page-head" data-reveal>
+            <span class="eyebrow">Hakkımızda</span>
+            <h1 class="page-title">Biz kimiz<span class="dim">?</span></h1>
+            <p class="page-lead">Satafi, karmaşadan uzaklaşma arzusunun doğrudan bir yansımasıdır.</p>
+        </div>
 
-        <section class="about-text" style="max-width: 800px; margin: 0 auto; line-height: 1.8; color: var(--text-secondary);">
-            <p>
-                Markanın adı bile bu felsefeyle, eksilterek inşa edildi: <b>Sade Tasarım Fikirleri</b> kelimelerinin özüne inip gereksiz olanı eledik. 
-                Çalışma disiplinimiz tamamen tümdengelim üzerine kuruludur. Önce büyük resmi, asıl amacı ve nihai hedefi kavrarız; 
-                ardından bu bütünü parçalarına ayırarak en saf formuna ulaştırırız.
-            </p>
-            <p style="margin-top: 20px;">
-                Yazılım ve tasarımda "az ama öz" ilkesini benimseyerek, kullanıcı deneyimini boğan her türlü gürültüden arınmış dijital çözümler üretiyoruz.
-            </p>
-        </section>
+        <div class="about-grid">
+
+            <section class="about-block" data-reveal>
+                <div class="block-head">
+                    <span class="block-index">01</span>
+                    <h2>Eksilterek İnşa</h2>
+                </div>
+                <p>
+                    Markanın adı bile bu felsefeyle, eksilterek inşa edildi: <strong>Sade Tasarım Fikirleri</strong> kelimelerinin özüne inip gereksiz olanı eledik. Çalışma disiplinimiz tamamen tümdengelim üzerine kuruludur. Önce büyük resmi, asıl amacı ve nihai hedefi kavrarız; ardından bu bütünü parçalarına ayırarak en saf formuna ulaştırırız.
+                </p>
+            </section>
+
+            <section class="about-block" data-reveal>
+                <div class="block-head">
+                    <span class="block-index">02</span>
+                    <h2>Az Ama Öz</h2>
+                </div>
+                <p>
+                    Yazılım ve tasarımda "az ama öz" ilkesini benimseyerek, kullanıcı deneyimini boğan her türlü gürültüden arınmış dijital çözümler üretiyoruz.
+                </p>
+            </section>
+
+        </div>
     </main>
 
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

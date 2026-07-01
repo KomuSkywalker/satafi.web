@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim - Satafi Studio</title>
+    <meta name="description" content="Bir sonraki büyük fikri beraber inşa edelim. Projelerinizi konuşmak için bize ulaşın.">
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="style.css">
 
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
 
     <meta property="og:title" content="İletişim - Satafi Studio">
     <meta property="og:description" content="Bir sonraki büyük fikri beraber inşa edelim. Projelerinizi konuşmak için Satafi Studio'ya ulaşın.">
@@ -20,37 +23,57 @@
     <meta name="twitter:image" content="https://satafistudio.com.tr/assets/social-preview.jpg">
 </head>
 <body>
-    <header class="navbar">
+
+    <header class="navbar" data-navbar>
         <div class="nav-container">
-            <a href="index.html" class="brand-wrapper">
-                <img src="assets/satafi-logo.png" alt="Satafi Logo" class="nav-logo">
+            <a href="index.html" class="brand-wrapper" aria-label="Satafi Studio ana sayfa">
+                <img src="assets/satafi-logo.png" alt="" class="nav-logo">
                 <div class="brand-text"><b>Satafi</b> Studio</div>
             </a>
-            <nav>
+            <nav aria-label="Ana menü">
                 <ul class="nav-links">
                     <li><a href="vitrin.html">Vitrin</a></li>
                     <li><a href="hakkimizda.html">Hakkımızda</a></li>
-                    <li><a href="iletisim.html" style="opacity: 1; font-weight: 500;">İletişim</a></li>
+                    <li><a href="iletisim.html" aria-current="page">İletişim</a></li>
                 </ul>
             </nav>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" data-nav-toggle>
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
-    <main class="subpage-content" style="padding-top: 15vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-        <section class="contact-section" style="max-width: 600px; text-align: center;">
-            <h1 style="font-size: 42px; font-weight: 600; margin-bottom: 15px; letter-spacing: -0.5px;">Bir sonraki büyük fikri<br>beraber inşa edelim.</h1>
-            <p style="font-size: 18px; color: var(--text-secondary); margin-bottom: 50px;">Projelerinizi konuşmak için bize ulaşın.</p>
+    <main class="page">
+        <div class="page-head" data-reveal>
+            <span class="eyebrow">İletişim</span>
+        </div>
 
-            <div class="contact-links" style="display: flex; flex-direction: column; gap: 20px;">
-                <a href="mailto:satafi.software@gmail.com" style="font-size: 24px; font-weight: 500; color: var(--text-primary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='var(--text-primary)'">
-                    satafi.software@gmail.com
+        <div class="contact-wrap">
+            <h1 class="contact-headline" data-reveal>Bir sonraki büyük fikri <span class="dim">beraber inşa edelim.</span></h1>
+            <p class="contact-lead" data-reveal style="--reveal-delay: 0.1s;">Projelerinizi konuşmak için bize ulaşın.</p>
+
+            <div class="contact-list" data-reveal style="--reveal-delay: 0.15s;">
+                <a class="contact-item" href="mailto:satafi.software@gmail.com">
+                    <div class="ci-main">
+                        <span class="ci-label">E-posta</span>
+                        <span class="ci-value">satafi.software@gmail.com</span>
+                    </div>
+                    <span class="ci-arrow">↗</span>
                 </a>
-                
-                <a href="https://instagram.com/satafi.studio" target="_blank" style="font-size: 24px; font-weight: 500; color: var(--text-primary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='var(--text-primary)'">
-                    @satafi.studio
+
+                <a class="contact-item" href="https://instagram.com/satafi.studio" target="_blank" rel="noopener">
+                    <div class="ci-main">
+                        <span class="ci-label">Instagram</span>
+                        <span class="ci-value">@satafi.studio</span>
+                    </div>
+                    <span class="ci-arrow">↗</span>
                 </a>
             </div>
-        </section>
+        </div>
     </main>
+
+    <footer class="site-footer" data-footer></footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satafi Studio</title>
+    <meta name="description" content="Yazılım ve Tasarımda Satafi Ekolü. Sade Tasarım Fikirleri.">
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="style.css">
 
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -20,30 +22,42 @@
     <meta name="twitter:description" content="Yazılım ve Tasarımda Satafi Ekolü. Profesyonel web ve tasarım çözümleri.">
     <meta name="twitter:image" content="https://satafistudio.com.tr/assets/social-preview.jpg">
 </head>
-<body>
+<body class="is-home">
 
-    <header class="navbar">
+    <header class="navbar" data-navbar>
         <div class="nav-container">
-            <a href="index.html" class="brand-wrapper">
-                <img src="assets/satafi-logo.png" alt="Satafi Logo" class="nav-logo">
+            <a href="index.html" class="brand-wrapper" aria-label="Satafi Studio ana sayfa">
+                <img src="assets/satafi-logo.png" alt="" class="nav-logo">
                 <div class="brand-text"><b>Satafi</b> Studio</div>
             </a>
-            <nav>
+            <nav aria-label="Ana menü">
                 <ul class="nav-links">
                     <li><a href="vitrin.html">Vitrin</a></li>
                     <li><a href="hakkimizda.html">Hakkımızda</a></li>
                     <li><a href="iletisim.html">İletişim</a></li>
                 </ul>
             </nav>
+            <button class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" data-nav-toggle>
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
     <main class="home-wrapper">
-        <section class="home-hero">
-            <h1>Sade Tasarım Fikirleri</h1>
-            <p>Yazılım ve Tasarımda Satafi Ekolü</p>
+        <section class="home-hero" data-hero>
+            <span class="eyebrow">Satafi Studio · Est. 2024</span>
+            <h1>
+                <span class="mark">Sa</span><span class="dim">de </span><span class="mark">Ta</span><span class="dim">sarım </span><span class="mark">Fi</span><span class="dim">kirleri</span>
+            </h1>
+            <p>Yazılım ve Tasarımda Satafi Ekolü.</p>
         </section>
+
+        <a href="vitrin.html" class="scroll-cue" aria-label="Vitrini keşfet">
+            <span>Keşfet</span>
+            <span class="line"></span>
+        </a>
     </main>
 
+    <script src="script.js"></script>
 </body>
 </html>
