@@ -117,26 +117,11 @@ body::before {
 }
 
 .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
+    display: inline-block;
     font-size: 13px;
     letter-spacing: 0.03em;
     color: var(--text-secondary);
     font-weight: 500;
-}
-
-.eyebrow::before {
-    content: "";
-    width: 24px;
-    height: 1px;
-    background: var(--border-highlight);
-    transform-origin: left;
-    animation: lineGrow 1s var(--ease) 0.3s backwards;
-}
-
-@keyframes lineGrow {
-    from { transform: scaleX(0); }
 }
 
 .dim {
@@ -372,11 +357,6 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 .home-hero .eyebrow {
     margin-bottom: 34px;
-    justify-content: center;
-}
-
-.home-hero .eyebrow::before {
-    display: none;
 }
 
 .home-hero h1 {
@@ -475,18 +455,14 @@ body.nav-open .nav-toggle span:nth-child(3) {
     color: var(--text-secondary);
 }
 
-.scroll-cue .line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--border-highlight), transparent);
-    animation: cueSlide 2.4s var(--ease) infinite;
-    transform-origin: top;
+.scroll-cue .cue-arrow {
+    font-size: 15px;
+    animation: cueBob 2.2s ease-in-out infinite;
 }
 
-@keyframes cueSlide {
-    0% { transform: scaleY(0); opacity: 0; }
-    40% { transform: scaleY(1); opacity: 1; }
-    100% { transform: scaleY(1) translateY(40px); opacity: 0; }
+@keyframes cueBob {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(6px); opacity: 1; }
 }
 
 /* Hero içerik sıralı giriş */
