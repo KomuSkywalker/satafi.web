@@ -1,5 +1,5 @@
 /* =========================================================
-   SATAFI STUDIO — etkileşim katmanı
+   SATAFI STUDIO / etkileşim katmanı
    ========================================================= */
 
 const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
