@@ -213,37 +213,98 @@ body.lang-switching .footer {
     transform-origin: left;
 }
 
-.lang-pill {
-    display: flex;
-    gap: 2px;
-    padding: 3px;
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.06);
+.lang-menu {
+    position: relative;
 }
 
-.lang-pill button {
+.lang-current {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 10px 15px;
+    border-radius: 100px;
+    transition: background 0.3s var(--ease);
+}
+
+.lang-current:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-caret {
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    margin-top: -3px;
+    transition: transform 0.35s var(--ease);
+}
+
+.lang-menu.open .lang-caret {
+    transform: rotate(225deg);
+    margin-top: 3px;
+}
+
+.lang-options {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    min-width: 150px;
+    padding: 6px;
+    border-radius: 16px;
+    background: rgba(10, 10, 10, 0.85);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px) scale(0.97);
+    transform-origin: top right;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s var(--ease);
+}
+
+.lang-menu.open .lang-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.lang-options button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     border: none;
     background: transparent;
     color: var(--text-2);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    padding: 7px 12px;
-    border-radius: 100px;
-    transition: color 0.3s var(--ease), background 0.3s var(--ease), transform 0.2s var(--ease);
+    font-size: 13px;
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 11px;
+    transition: background 0.25s var(--ease), color 0.25s var(--ease);
 }
 
-.lang-pill button:hover {
+.lang-options button:hover {
+    background: rgba(255, 255, 255, 0.07);
     color: var(--text);
 }
 
-.lang-pill button:active {
-    transform: scale(0.94);
+.lang-options button.active {
+    color: var(--text);
 }
 
-.lang-pill button.active {
-    background: var(--text);
-    color: var(--bg);
+.lang-options button.active::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
 }
 
 @property --ang {
