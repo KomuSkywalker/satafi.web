@@ -148,6 +148,7 @@ const manifesto = (function () {
         const litCount = Math.round(progress * spans.length);
         spans.forEach(function (span, i) {
             span.classList.toggle("lit", i < litCount);
+            span.classList.toggle("edge", i === litCount - 1 && litCount < spans.length);
         });
     }
 
@@ -308,6 +309,96 @@ function switchLang(lang) {
             card.style.transform = "";
         });
     });
+})();
+
+(function initEmbers() {
+    if (REDUCED_MOTION) return;
+    const canvas = document.querySelector("[data-embers]");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let width = 0;
+    let height = 0;
+    let particles = [];
+    let running = false;
+    let raf = 0;
+
+    function spawn(anywhere) {
+        return {
+            x: Math.random() * width,
+            y: anywhere ? Math.random() * height : height + 12,
+            r: 0.6 + Math.random() * 1.6,
+            v: 0.12 + Math.random() * 0.3,
+            drift: 3 + Math.random() * 8,
+            phase: Math.random() * Math.PI * 2,
+            a: 0.12 + Math.random() * 0.45
+        };
+    }
+
+    function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = rect.width;
+        height = rect.height;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const count = Math.round(Math.min(width / 26, 52));
+        particles = Array.from({ length: count }, function () {
+            return spawn(true);
+        });
+    }
+
+    function tick(t) {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(function (p, i) {
+            p.y -= p.v;
+            if (p.y < -14) particles[i] = spawn(false);
+            const x = p.x + Math.sin(t / 1900 + p.phase) * p.drift;
+            const glow = p.a * (0.7 + 0.3 * Math.sin(t / 700 + p.phase));
+            ctx.beginPath();
+            ctx.arc(x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(226, 168, 107, " + glow.toFixed(3) + ")";
+            ctx.fill();
+        });
+        raf = requestAnimationFrame(tick);
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+    const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting && !running) {
+                running = true;
+                raf = requestAnimationFrame(tick);
+            } else if (!entry.isIntersecting && running) {
+                running = false;
+                cancelAnimationFrame(raf);
+            }
+        });
+    });
+    io.observe(canvas);
+})();
+
+(function initParallax() {
+    if (REDUCED_MOTION) return;
+    const wordmark = document.querySelector(".hero-wordmark");
+    if (!wordmark) return;
+    const heroInner = document.querySelector(".hero-inner");
+    let raf = 0;
+
+    function update() {
+        raf = 0;
+        const y = window.scrollY;
+        wordmark.style.setProperty("--par", y * 0.16 + "px");
+        if (heroInner) {
+            heroInner.style.opacity = Math.max(1 - y / 700, 0);
+            heroInner.style.transform = "translateY(" + y * 0.08 + "px)";
+        }
+    }
+
+    window.addEventListener("scroll", function () {
+        if (!raf) raf = requestAnimationFrame(update);
+    }, { passive: true });
 })();
 
 (function initMagnetic() {

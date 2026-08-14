@@ -246,9 +246,16 @@ body.lang-switching .footer {
     color: var(--bg);
 }
 
+@property --ang {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
 .hero {
     position: relative;
     margin: var(--frame-gap);
+    animation: frameIn 1.1s var(--ease) both;
     min-height: calc(100svh - var(--frame-gap) * 2);
     border-radius: var(--radius);
     border: 1px solid var(--line);
@@ -263,11 +270,26 @@ body.lang-switching .footer {
     isolation: isolate;
 }
 
+@keyframes frameIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.99); }
+}
+
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(600px circle at var(--mx, 70%) var(--my, 30%), rgba(255, 255, 255, 0.05), transparent 55%);
+    background:
+        radial-gradient(600px circle at var(--mx, 70%) var(--my, 30%), rgba(255, 255, 255, 0.055), transparent 55%),
+        radial-gradient(900px circle at var(--mx, 70%) var(--my, 30%), rgba(226, 168, 107, 0.04), transparent 60%);
+    pointer-events: none;
+}
+
+.embers {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
 }
 
@@ -429,6 +451,7 @@ body.lang-switching .footer {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transform: translateX(-50%) translateY(var(--par, 0px));
     animation: wordmarkRise 1.5s var(--ease) 0.45s backwards;
 }
 
@@ -479,6 +502,11 @@ body.lang-switching .footer {
     color: var(--text);
 }
 
+.manifesto-text span.edge {
+    color: var(--accent);
+    text-shadow: 0 0 26px rgba(226, 168, 107, 0.45);
+}
+
 .approach {
     max-width: var(--page-max);
     margin-inline: auto;
@@ -518,6 +546,31 @@ body.lang-switching .footer {
     -webkit-backdrop-filter: blur(10px);
     padding: 36px 30px 40px;
     transition: transform 0.35s var(--ease), border-color 0.4s var(--ease), background 0.4s var(--ease);
+}
+
+.glass-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--ang), transparent 0%, rgba(226, 168, 107, 0.55) 10%, transparent 24%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+    pointer-events: none;
+}
+
+.glass-card:hover::before {
+    opacity: 1;
+    animation: borderSpin 3.2s linear infinite;
+}
+
+@keyframes borderSpin {
+    to { --ang: 360deg; }
 }
 
 .glass-card::after {
@@ -665,21 +718,28 @@ body.lang-switching .footer {
 .marquee {
     overflow: hidden;
     border-top: 1px solid var(--line);
-    padding: 20px 0;
+    padding: clamp(30px, 5vh, 52px) 0;
 }
 
 .marquee-track {
     display: flex;
     width: max-content;
-    animation: marqueeSlide 38s linear infinite;
+    animation: marqueeSlide 60s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
 }
 
 .marquee-track span {
     white-space: nowrap;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    color: var(--text-3);
-    padding-right: 12px;
+    font-size: clamp(44px, 7.5vw, 104px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+    padding-right: 28px;
 }
 
 @keyframes marqueeSlide {
