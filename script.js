@@ -1,91 +1,236 @@
-/* =========================================================
-   SATAFI STUDIO / etkileşim katmanı
-   ========================================================= */
-
 const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ---------- Ortak footer (tek kaynak) ---------- */
-(function injectFooter() {
-    const mount = document.querySelector("[data-footer]");
-    if (!mount) return;
+const I18N = {
+    tr: {
+        "meta.description": "Bağımsız yazılım ve tasarım stüdyosu. Az sayıda iş, en yüksek özen.",
+        "nav.approach": "Yaklaşım",
+        "nav.contact": "İletişim",
+        "hero.eyebrow": "Bağımsız yazılım ve tasarım stüdyosu",
+        "hero.w1": "Tasarla.",
+        "hero.w2": "Yaz.",
+        "hero.w3": "Yaşat.",
+        "hero.lead": "Az sayıda iş alır, her birini yıllarca yaşayacak bir ürün olarak büyütürüz.",
+        "hero.cta1": "İletişime geçin",
+        "hero.cta2": "Yaklaşımımız",
+        "manifesto": "İyi yazılım sessizdir. Gösterişle değil, güvenle konuşur. Biz o sessizliği tasarlıyoruz.",
+        "approach.eyebrow": "Yaklaşım",
+        "approach.title": "Nasıl çalışıyoruz?",
+        "approach.c1t": "Eksilterek inşa",
+        "approach.c1p": "Bir üründe kalan son şey, gerekli olandır. Emin olamadığımız her ögeyi çıkarır, kalanı kusursuzlaştırırız.",
+        "approach.c2t": "Uçtan uca sahiplik",
+        "approach.c2p": "Fikirden yayına kadar strateji, tasarım ve yazılım tek çatı altında ilerler. Hiçbir şey arada kaybolmaz.",
+        "approach.c3t": "Uzun soluk",
+        "approach.c3p": "Yayınladığımız her ürünün arkasında dururuz. Sürüm sürüm inceltir, yıllarca yaşatırız.",
+        "contact.eyebrow": "İletişim",
+        "contact.title": "Konuşalım.",
+        "contact.lead": "Aklınızda bir ürün, bir soru ya da yalnızca bir merhaba varsa kapımız açık.",
+        "contact.email": "E-posta",
+        "contact.note": "Her iletiye en geç bir iş günü içinde dönüş yaparız.",
+        "footer.tag": "Sessizce, beklediğiniz gibi çalışır.",
+        "footer.rights": "© {year} Satafi Studio. Tüm hakları saklıdır.",
+        "marquee": ["Strateji", "Tasarım", "Yazılım", "Bakım"],
+        "e404.eyebrow": "Hata 404",
+        "e404.w1": "Burada",
+        "e404.w2": "bir şey yok.",
+        "e404.lead": "Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir.",
+        "e404.cta": "Ana sayfaya dönün"
+    },
+    en: {
+        "meta.description": "Independent software and design studio. Few projects, the highest care.",
+        "nav.approach": "Approach",
+        "nav.contact": "Contact",
+        "hero.eyebrow": "Independent software and design studio",
+        "hero.w1": "Design.",
+        "hero.w2": "Build.",
+        "hero.w3": "Last.",
+        "hero.lead": "We take on few projects and grow each one into a product built to last for years.",
+        "hero.cta1": "Get in touch",
+        "hero.cta2": "Our approach",
+        "manifesto": "Good software is quiet. It speaks through trust, not noise. We design that quiet.",
+        "approach.eyebrow": "Approach",
+        "approach.title": "How we work",
+        "approach.c1t": "Build by subtraction",
+        "approach.c1p": "What remains in a product is what it truly needs. We remove everything we cannot defend and refine the rest.",
+        "approach.c2t": "End to end ownership",
+        "approach.c2p": "From idea to launch, strategy, design and engineering move under one roof. Nothing gets lost in between.",
+        "approach.c3t": "The long run",
+        "approach.c3p": "We stand behind everything we ship. Release by release, we refine it and keep it alive for years.",
+        "contact.eyebrow": "Contact",
+        "contact.title": "Let's talk.",
+        "contact.lead": "A product idea, a question or just a hello, our door is open.",
+        "contact.email": "Email",
+        "contact.note": "We reply to every message within one business day.",
+        "footer.tag": "Quietly, exactly as expected.",
+        "footer.rights": "© {year} Satafi Studio. All rights reserved.",
+        "marquee": ["Strategy", "Design", "Software", "Care"],
+        "e404.eyebrow": "Error 404",
+        "e404.w1": "Nothing",
+        "e404.w2": "to see here.",
+        "e404.lead": "The page you are looking for may have moved or never existed.",
+        "e404.cta": "Back to home"
+    },
+    fr: {
+        "meta.description": "Studio indépendant de logiciel et de design. Peu de projets, le plus grand soin.",
+        "nav.approach": "Approche",
+        "nav.contact": "Contact",
+        "hero.eyebrow": "Studio indépendant de logiciel et de design",
+        "hero.w1": "Concevoir.",
+        "hero.w2": "Créer.",
+        "hero.w3": "Durer.",
+        "hero.lead": "Nous prenons peu de projets et faisons grandir chacun comme un produit fait pour durer.",
+        "hero.cta1": "Nous contacter",
+        "hero.cta2": "Notre approche",
+        "manifesto": "Un bon logiciel est silencieux. Il parle par la confiance, pas par le bruit. Nous dessinons ce silence.",
+        "approach.eyebrow": "Approche",
+        "approach.title": "Notre façon de travailler",
+        "approach.c1t": "Construire par soustraction",
+        "approach.c1p": "Ce qui reste dans un produit est ce dont il a vraiment besoin. Nous retirons tout ce que nous ne pouvons pas défendre.",
+        "approach.c2t": "Maîtrise de bout en bout",
+        "approach.c2p": "De l'idée au lancement, stratégie, design et code avancent sous un même toit. Rien ne se perd en chemin.",
+        "approach.c3t": "Le temps long",
+        "approach.c3p": "Nous restons derrière tout ce que nous publions. Version après version, nous l'affinons pendant des années.",
+        "contact.eyebrow": "Contact",
+        "contact.title": "Parlons-en.",
+        "contact.lead": "Une idée de produit, une question ou un simple bonjour, notre porte est ouverte.",
+        "contact.email": "Email",
+        "contact.note": "Nous répondons à chaque message sous un jour ouvré.",
+        "footer.tag": "Silencieux, exactement comme prévu.",
+        "footer.rights": "© {year} Satafi Studio. Tous droits réservés.",
+        "marquee": ["Stratégie", "Design", "Logiciel", "Suivi"],
+        "e404.eyebrow": "Erreur 404",
+        "e404.w1": "Rien",
+        "e404.w2": "à voir ici.",
+        "e404.lead": "La page que vous cherchez a peut-être été déplacée ou n'a jamais existé.",
+        "e404.cta": "Retour à l'accueil"
+    }
+};
 
-    const year = new Date().getFullYear();
-    mount.innerHTML = `
-        <div class="footer-inner" data-reveal>
-            <div class="footer-brand">
-                <a href="index.html" class="brand-text"><b>Satafi</b> Studio</a>
-                <p>Bağımsız bir yazılım ve tasarım stüdyosu. Az sayıda iş, en yüksek özen.</p>
-            </div>
-            <nav class="footer-nav" aria-label="Alt menü">
-                <div class="footer-col">
-                    <h4>Keşfet</h4>
-                    <a href="vitrin.html">Üretimler</a>
-                    <a href="hakkimizda.html">Stüdyo</a>
-                    <a href="iletisim.html">İletişim</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Bağlan</h4>
-                    <a href="mailto:satafi.software@gmail.com">E-posta</a>
-                    <a href="https://instagram.com/satafi.studio" target="_blank" rel="noopener">Instagram</a>
-                </div>
-            </nav>
-        </div>
-        <div class="footer-base" data-reveal style="--reveal-delay: 0.1s;">
-            <span>© ${year} Satafi Studio. Tüm hakları saklıdır.</span>
-            <span>Sessizce, beklediğiniz gibi çalışır.</span>
-        </div>
-    `;
+let currentLang = "tr";
+
+function readStoredLang() {
+    try {
+        const stored = localStorage.getItem("satafi-lang");
+        return I18N[stored] ? stored : "tr";
+    } catch {
+        return "tr";
+    }
+}
+
+function storeLang(lang) {
+    try {
+        localStorage.setItem("satafi-lang", lang);
+    } catch {}
+}
+
+const manifesto = (function () {
+    const section = document.querySelector("[data-manifesto]");
+    const holder = document.querySelector("[data-manifesto-text]");
+    let spans = [];
+
+    function rebuild(lang) {
+        if (!holder) return;
+        holder.textContent = "";
+        spans = I18N[lang]["manifesto"].split(" ").map(function (word) {
+            const span = document.createElement("span");
+            span.textContent = word;
+            holder.appendChild(span);
+            holder.appendChild(document.createTextNode(" "));
+            return span;
+        });
+        update();
+    }
+
+    function update() {
+        if (!section || !spans.length) return;
+        const rect = section.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const progress = Math.min(Math.max((vh * 0.9 - rect.top) / (rect.height * 0.9), 0), 1);
+        const litCount = Math.round(progress * spans.length);
+        spans.forEach(function (span, i) {
+            span.classList.toggle("lit", i < litCount);
+        });
+    }
+
+    return { rebuild, update };
 })();
 
-/* ---------- Navbar: kaydırınca kenarlık ---------- */
-(function navbarScroll() {
-    const nav = document.querySelector("[data-navbar]");
-    if (!nav) return;
+function buildMarquee(lang) {
+    const track = document.querySelector("[data-marquee]");
+    if (!track) return;
+    const half = (I18N[lang]["marquee"].join("  ·  ") + "  ·  ").repeat(4);
+    track.textContent = "";
+    for (let i = 0; i < 2; i++) {
+        const span = document.createElement("span");
+        span.textContent = half;
+        track.appendChild(span);
+    }
+}
 
-    const onScroll = () => {
-        nav.classList.toggle("scrolled", window.scrollY > 8);
+function applyLang(lang) {
+    const dict = I18N[lang];
+    const year = new Date().getFullYear();
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        const value = dict[el.dataset.i18n];
+        if (value) el.textContent = value.replace("{year}", year);
+    });
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", dict["meta.description"]);
+    document.querySelectorAll("[data-lang]").forEach(function (btn) {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+    manifesto.rebuild(lang);
+    buildMarquee(lang);
+    currentLang = lang;
+    storeLang(lang);
+}
+
+function switchLang(lang) {
+    if (lang === currentLang || !I18N[lang]) return;
+    if (REDUCED_MOTION) {
+        applyLang(lang);
+        return;
+    }
+    document.body.classList.add("lang-switching");
+    setTimeout(function () {
+        applyLang(lang);
+        requestAnimationFrame(function () {
+            document.body.classList.remove("lang-switching");
+        });
+    }, 220);
+}
+
+(function initLang() {
+    document.querySelectorAll("[data-lang]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            switchLang(btn.dataset.lang);
+        });
+    });
+    applyLang(readStoredLang());
+})();
+
+(function initTopbar() {
+    const bar = document.querySelector("[data-navbar]");
+    if (!bar) return;
+    const onScroll = function () {
+        bar.classList.toggle("scrolled", window.scrollY > 8);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 })();
 
-/* ---------- Mobil menü ---------- */
-(function mobileMenu() {
-    const toggle = document.querySelector("[data-nav-toggle]");
-    if (!toggle) return;
-
-    const close = () => {
-        document.body.classList.remove("nav-open");
-        toggle.setAttribute("aria-expanded", "false");
-    };
-
-    toggle.addEventListener("click", () => {
-        const open = document.body.classList.toggle("nav-open");
-        toggle.setAttribute("aria-expanded", String(open));
-    });
-
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-        link.addEventListener("click", close);
-    });
-
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") close();
-    });
-})();
-
-/* ---------- Scroll reveal ---------- */
-(function scrollReveal() {
+(function initReveal() {
     const items = document.querySelectorAll("[data-reveal]");
     if (!items.length) return;
-
     if (!("IntersectionObserver" in window)) {
-        items.forEach((el) => el.classList.add("in-view"));
+        items.forEach(function (el) {
+            el.classList.add("in-view");
+        });
         return;
     }
-
     const io = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
+        function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("in-view");
                     io.unobserve(entry.target);
@@ -94,78 +239,88 @@ const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").mat
         },
         { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
-
-    items.forEach((el) => io.observe(el));
+    items.forEach(function (el) {
+        io.observe(el);
+    });
 })();
 
-/* ---------- Kaydırma ilerleme çubuğu ---------- */
-(function scrollProgress() {
+(function initProgressBar() {
     const bar = document.createElement("div");
     bar.className = "scroll-progress";
     document.body.appendChild(bar);
-
-    const update = () => {
+    const update = function () {
         const max = document.documentElement.scrollHeight - window.innerHeight;
         const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
-        bar.style.transform = `scaleX(${ratio})`;
+        bar.style.transform = "scaleX(" + ratio + ")";
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
 })();
 
-/* ---------- Ana sayfa: imleci takip eden spot ışığı ---------- */
-(function heroSpotlight() {
-    if (REDUCED_MOTION) return;
-    const wrap = document.querySelector(".home-hero-wrap");
-    if (!wrap) return;
+(function initManifestoScroll() {
+    let raf = 0;
+    const schedule = function () {
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+            raf = 0;
+            manifesto.update();
+        });
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+})();
 
-    let x = 0, y = 0, raf = 0;
-    window.addEventListener("mousemove", (e) => {
+(function initHeroSpotlight() {
+    if (REDUCED_MOTION) return;
+    const hero = document.querySelector(".hero");
+    if (!hero) return;
+    let x = 0;
+    let y = 0;
+    let raf = 0;
+    window.addEventListener("mousemove", function (e) {
         x = e.clientX;
         y = e.clientY;
         if (raf) return;
-        raf = requestAnimationFrame(() => {
+        raf = requestAnimationFrame(function () {
             raf = 0;
-            const r = wrap.getBoundingClientRect();
-            wrap.style.setProperty("--mx", (x - r.left) + "px");
-            wrap.style.setProperty("--my", (y - r.top) + "px");
+            const rect = hero.getBoundingClientRect();
+            hero.style.setProperty("--mx", (x - rect.left) + "px");
+            hero.style.setProperty("--my", (y - rect.top) + "px");
         });
     }, { passive: true });
 })();
 
-/* ---------- Üretim satırları & CTA: imleci takip eden ışık ---------- */
-(function rowGlow() {
+(function initTilt() {
     if (REDUCED_MOTION) return;
-
-    document.querySelectorAll(".work-row, .cta-band").forEach((el) => {
-        el.addEventListener("mousemove", (e) => {
-            const r = el.getBoundingClientRect();
-            el.style.setProperty("--px", (e.clientX - r.left) + "px");
-            el.style.setProperty("--py", (e.clientY - r.top) + "px");
+    document.querySelectorAll("[data-tilt]").forEach(function (card) {
+        card.addEventListener("mousemove", function (e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty("--px", x + "px");
+            card.style.setProperty("--py", y + "px");
+            const rx = (y / rect.height - 0.5) * -4;
+            const ry = (x / rect.width - 0.5) * 4;
+            card.style.transform = "perspective(800px) rotateX(" + rx + "deg) rotateY(" + ry + "deg)";
         }, { passive: true });
+        card.addEventListener("mouseleave", function () {
+            card.style.transform = "";
+        });
     });
 })();
 
-/* ---------- Sayfa geçişleri: yumuşak çıkış ---------- */
-(function pageTransitions() {
+(function initMagnetic() {
     if (REDUCED_MOTION) return;
-
-    document.addEventListener("click", (e) => {
-        const link = e.target.closest("a");
-        if (!link) return;
-
-        const href = link.getAttribute("href") || "";
-        if (!href.endsWith(".html") || link.target === "_blank") return;
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-
-        e.preventDefault();
-        document.body.classList.add("page-exit");
-        setTimeout(() => { window.location.href = href; }, 300);
-    });
-
-    /* bfcache'ten dönüşte sayfayı görünür kıl */
-    window.addEventListener("pageshow", () => {
-        document.body.classList.remove("page-exit");
+    document.querySelectorAll("[data-magnetic]").forEach(function (el) {
+        el.addEventListener("mousemove", function (e) {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            el.style.transform = "translate(" + x * 0.18 + "px, " + y * 0.22 + "px)";
+        }, { passive: true });
+        el.addEventListener("mouseleave", function () {
+            el.style.transform = "";
+        });
     });
 })();
