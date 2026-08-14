@@ -26,9 +26,7 @@ const I18N = {
         "contact.lead": "Aklınızda bir ürün, bir soru ya da yalnızca bir merhaba varsa kapımız açık.",
         "contact.email": "E-posta",
         "contact.note": "Her iletiye en geç bir iş günü içinde dönüş yaparız.",
-        "footer.tag": "Sessizce, beklediğiniz gibi çalışır.",
         "footer.rights": "© {year} Satafi Studio. Tüm hakları saklıdır.",
-        "marquee": ["Strateji", "Tasarım", "Yazılım", "Bakım"],
         "e404.eyebrow": "Hata 404",
         "e404.w1": "Burada",
         "e404.w2": "bir şey yok.",
@@ -60,9 +58,7 @@ const I18N = {
         "contact.lead": "A product idea, a question or just a hello, our door is open.",
         "contact.email": "Email",
         "contact.note": "We reply to every message within one business day.",
-        "footer.tag": "Quietly, exactly as expected.",
         "footer.rights": "© {year} Satafi Studio. All rights reserved.",
-        "marquee": ["Strategy", "Design", "Software", "Care"],
         "e404.eyebrow": "Error 404",
         "e404.w1": "Nothing",
         "e404.w2": "to see here.",
@@ -94,9 +90,7 @@ const I18N = {
         "contact.lead": "Une idée de produit, une question ou un simple bonjour, notre porte est ouverte.",
         "contact.email": "Email",
         "contact.note": "Nous répondons à chaque message sous un jour ouvré.",
-        "footer.tag": "Silencieux, exactement comme prévu.",
         "footer.rights": "© {year} Satafi Studio. Tous droits réservés.",
-        "marquee": ["Stratégie", "Design", "Logiciel", "Suivi"],
         "e404.eyebrow": "Erreur 404",
         "e404.w1": "Rien",
         "e404.w2": "à voir ici.",
@@ -155,18 +149,6 @@ const manifesto = (function () {
     return { rebuild, update };
 })();
 
-function buildMarquee(lang) {
-    const track = document.querySelector("[data-marquee]");
-    if (!track) return;
-    const half = (I18N[lang]["marquee"].join("  ·  ") + "  ·  ").repeat(4);
-    track.textContent = "";
-    for (let i = 0; i < 2; i++) {
-        const span = document.createElement("span");
-        span.textContent = half;
-        track.appendChild(span);
-    }
-}
-
 const LANG_LABELS = { tr: "TR", en: "EN", fr: "FR" };
 
 function applyLang(lang) {
@@ -185,7 +167,6 @@ function applyLang(lang) {
         btn.classList.toggle("active", btn.dataset.lang === lang);
     });
     manifesto.rebuild(lang);
-    buildMarquee(lang);
     currentLang = lang;
     storeLang(lang);
 }

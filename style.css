@@ -776,37 +776,6 @@ body.lang-switching .footer {
     color: var(--text-3);
 }
 
-.marquee {
-    overflow: hidden;
-    border-top: 1px solid var(--line);
-    padding: clamp(30px, 5vh, 52px) 0;
-}
-
-.marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marqueeSlide 60s linear infinite;
-}
-
-.marquee:hover .marquee-track {
-    animation-play-state: paused;
-}
-
-.marquee-track span {
-    white-space: nowrap;
-    font-size: clamp(44px, 7.5vw, 104px);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
-    padding-right: 28px;
-}
-
-@keyframes marqueeSlide {
-    to { transform: translateX(-50%); }
-}
-
 .footer {
     max-width: var(--page-max);
     margin-inline: auto;
