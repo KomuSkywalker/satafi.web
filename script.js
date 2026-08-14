@@ -395,15 +395,15 @@ function switchLang(lang) {
 
 (function initParallax() {
     if (REDUCED_MOTION) return;
-    const wordmark = document.querySelector(".hero-wordmark");
-    if (!wordmark) return;
+    const horizon = document.querySelector(".hero-horizon");
+    if (!horizon) return;
     const heroInner = document.querySelector(".hero-inner");
     let raf = 0;
 
     function update() {
         raf = 0;
         const y = window.scrollY;
-        wordmark.style.setProperty("--par", y * 0.16 + "px");
+        horizon.style.setProperty("--par", y * 0.12 + "px");
         if (heroInner) {
             heroInner.style.opacity = Math.max(1 - y / 700, 0);
             heroInner.style.transform = "translateY(" + y * 0.08 + "px)";

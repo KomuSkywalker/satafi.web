@@ -496,49 +496,45 @@ body.lang-switching .footer {
     border-color: var(--line-bright);
 }
 
-.hero-wordmark {
+.hero-horizon {
     position: absolute;
     z-index: 1;
     left: 50%;
-    bottom: -0.14em;
-    transform: translateX(-50%);
-    font-size: clamp(110px, 23.5vw, 490px);
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    line-height: 1;
-    white-space: nowrap;
+    bottom: 0;
+    width: min(160vw, 2100px);
+    aspect-ratio: 2.4 / 1;
+    border-radius: 50%;
     pointer-events: none;
-    user-select: none;
-    -webkit-user-select: none;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.04) 82%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    transform: translateX(-50%) translateY(var(--par, 0px));
-    animation: wordmarkRise 1.5s var(--ease) 0.45s backwards;
+    background: #050506;
+    border-top: 1px solid rgba(255, 226, 190, 0.75);
+    box-shadow:
+        0 -2px 22px rgba(255, 226, 190, 0.5),
+        0 -14px 90px rgba(226, 168, 107, 0.38),
+        0 -60px 220px rgba(226, 168, 107, 0.16);
+    transform: translateX(-50%) translateY(calc(60% + var(--par, 0px)));
+    animation: horizonRise 1.8s var(--ease) 0.5s backwards;
 }
 
-@keyframes wordmarkRise {
-    from { transform: translateX(-50%) translateY(34%); opacity: 0; }
+@keyframes horizonRise {
+    from { transform: translateX(-50%) translateY(calc(82% + var(--par, 0px))); opacity: 0; }
 }
 
-.hero-wordmark::after {
-    content: attr(data-text);
+.hero-horizon::after {
+    content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(105deg, transparent 42%, rgba(226, 168, 107, 0.55) 50%, transparent 58%);
-    background-size: 260% 100%;
-    background-position: 130% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: wordmarkSheen 7s linear 2.2s infinite;
+    left: 50%;
+    top: 0;
+    width: 74%;
+    height: 52%;
+    transform: translate(-50%, -55%);
+    background: radial-gradient(ellipse at center, rgba(255, 214, 160, 0.30), rgba(226, 168, 107, 0.10) 48%, transparent 72%);
+    filter: blur(28px);
+    animation: bloomBreath 6s ease-in-out infinite alternate;
 }
 
-@keyframes wordmarkSheen {
-    0% { background-position: 130% 0; }
-    45% { background-position: -130% 0; }
-    100% { background-position: -130% 0; }
+@keyframes bloomBreath {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
 }
 
 .manifesto {
@@ -886,14 +882,9 @@ body.lang-switching .footer {
 
     [data-reveal],
     .intro-step,
-    .staccato .word,
-    .hero-wordmark {
+    .staccato .word {
         opacity: 1 !important;
         transform: none !important;
         filter: none !important;
-    }
-
-    .hero-wordmark {
-        transform: translateX(-50%) !important;
     }
 }
