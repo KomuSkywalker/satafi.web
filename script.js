@@ -26,6 +26,7 @@ const I18N = {
         "contact.lead": "Aklınızda bir ürün, bir soru ya da yalnızca bir merhaba varsa kapımız açık.",
         "contact.email": "E-posta",
         "contact.note": "Her iletiye en geç bir iş günü içinde dönüş yaparız.",
+        "footer.privacy": "Gizlilik",
         "footer.rights": "© {year} Satafi Studio. Tüm hakları saklıdır.",
         "e404.eyebrow": "Hata 404",
         "e404.w1": "Burada",
@@ -58,6 +59,7 @@ const I18N = {
         "contact.lead": "A product idea, a question or just a hello, our door is open.",
         "contact.email": "Email",
         "contact.note": "We reply to every message within one business day.",
+        "footer.privacy": "Privacy",
         "footer.rights": "© {year} Satafi Studio. All rights reserved.",
         "e404.eyebrow": "Error 404",
         "e404.w1": "Nothing",
@@ -90,6 +92,7 @@ const I18N = {
         "contact.lead": "Une idée de produit, une question ou un simple bonjour, notre porte est ouverte.",
         "contact.email": "Email",
         "contact.note": "Nous répondons à chaque message sous un jour ouvré.",
+        "footer.privacy": "Confidentialité",
         "footer.rights": "© {year} Satafi Studio. Tous droits réservés.",
         "e404.eyebrow": "Erreur 404",
         "e404.w1": "Rien",
@@ -104,10 +107,16 @@ let currentLang = "tr";
 function readStoredLang() {
     try {
         const stored = localStorage.getItem("satafi-lang");
-        return I18N[stored] ? stored : "tr";
-    } catch {
-        return "tr";
-    }
+        if (I18N[stored]) return stored;
+    } catch {}
+    const preferred = (navigator.languages || [navigator.language || "tr"])
+        .map(function (code) {
+            return String(code).slice(0, 2).toLowerCase();
+        })
+        .find(function (code) {
+            return I18N[code];
+        });
+    return preferred || "tr";
 }
 
 function storeLang(lang) {

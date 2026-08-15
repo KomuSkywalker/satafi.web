@@ -28,3 +28,12 @@ Proje KANUN.md standartlarına bağlıdır: metinlerde uzun çizgi kullanılmaz,
 ## Ortam değişkenleri ve mock içerik
 
 Ortam değişkeni yoktur. Mock içerik yoktur, tüm metinler gerçektir.
+
+## Doğrulanması gereken varsayımlar
+
+- gizlilik.html içinde Ezan Saati için "konum cihazda işlenir, sunucuya gönderilmez" ifadesi kullanıldı; uygulamanın gerçek davranışıyla eşleştiği kontrol edilmelidir.
+- Ziyaret istatistiği için satafi.goatcounter.com kodu bağlandı; goatcounter.com adresinde bu isimle ücretsiz hesap açılana kadar sayaç veri toplamaz, site etkilenmez.
+
+## Search Console
+
+Alan adı doğrulaması için search.google.com/search-console adresinde satafistudio.com.tr eklenmeli, HTML etiket yöntemi seçilip verilen meta etiketi index.html head bölümüne konmalı, ardından sitemap.xml gönderilmelidir.
