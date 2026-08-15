@@ -158,9 +158,8 @@ body.lang-switching .footer {
 }
 
 .brand-logo {
-    height: 24px;
+    height: 19px;
     width: auto;
-    border-radius: 7px;
     transition: transform 0.5s var(--ease);
 }
 
