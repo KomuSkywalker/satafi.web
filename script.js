@@ -2,7 +2,6 @@ const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").mat
 
 const I18N = {
     tr: {
-        "meta.title": "Satafi Studio - Sade. Ama sıradan değil.",
         "meta.description": "Estetiğe önem veren bağımsız yazılım ve tasarım stüdyosu. Süreci baştan sona yönetir, sade ama sıradan olmayan ürünler yaparız.",
         "nav.approach": "Yaklaşım",
         "nav.contact": "İletişim",
@@ -36,7 +35,6 @@ const I18N = {
         "e404.cta": "Ana sayfaya dönün"
     },
     en: {
-        "meta.title": "Satafi Studio - Simple. Never ordinary.",
         "meta.description": "An independent software and design studio that cares about aesthetics. We run the whole process and build products that are simple, never ordinary.",
         "nav.approach": "Approach",
         "nav.contact": "Contact",
@@ -70,7 +68,6 @@ const I18N = {
         "e404.cta": "Back to home"
     },
     fr: {
-        "meta.title": "Satafi Studio - Simple. Jamais ordinaire.",
         "meta.description": "Studio indépendant de logiciel et de design attaché à l'esthétique. Nous menons tout le processus et créons des produits simples, jamais ordinaires.",
         "nav.approach": "Approche",
         "nav.contact": "Contact",
