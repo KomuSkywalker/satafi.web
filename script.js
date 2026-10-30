@@ -2,17 +2,15 @@ const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").mat
 
 const I18N = {
     tr: {
-        "meta.description": "Estetiğe önem veren bağımsız yazılım ve tasarım stüdyosu. Süreci baştan sona yönetir, sade ama sıradan olmayan ürünler yaparız.",
+        "meta.description": "Estetiğe önem veren bağımsız yazılım ve tasarım stüdyosu. Gürültüyü atar, işin özünü bırakırız.",
         "nav.menu": "Menü",
-        "clock.place": "İstanbul'da saat",
         "manifesto.label": "Manifesto",
         "nav.studio": "Stüdyo",
         "nav.approach": "Yaklaşım",
         "nav.contact": "İletişim",
         "hero.eyebrow": "Bağımsız yazılım ve tasarım stüdyosu",
-        "hero.w1": "Sade.",
-        "hero.w2": "Ama",
-        "hero.w3": "sıradan değil.",
+        "hero.w1": "Gerisi",
+        "hero.w2": "gürültü.",
         "hero.lead": "Gürültüyü atar, işin özünü bırakırız. Fikirden yayına her adımı biz yönetir, gerektiğinde kuralları yeniden yazarız.",
         "hero.cta1": "Bize yazın",
         "hero.cta2": "Nasıl çalışırız",
@@ -32,7 +30,7 @@ const I18N = {
         "contact.email": "E-posta",
         "contact.note": "Her mesaja en geç bir iş günü içinde dönüyoruz.",
         "footer.privacy": "Gizlilik",
-        "footer.tagline": "Sade. Ama sıradan değil.",
+        "footer.tagline": "Gerisi gürültü.",
         "footer.nav": "Gezinti",
         "footer.follow": "Takip edin",
         "footer.top": "Başa dön ↑",
@@ -44,17 +42,15 @@ const I18N = {
         "e404.cta": "Ana sayfaya dönün"
     },
     en: {
-        "meta.description": "An independent software and design studio that cares about aesthetics. We run the whole process and build products that are simple, never ordinary.",
+        "meta.description": "An independent software and design studio that cares about aesthetics. We strip away the noise and keep what matters.",
         "nav.menu": "Menu",
-        "clock.place": "Time in Istanbul",
         "manifesto.label": "Manifesto",
         "nav.studio": "Studio",
         "nav.approach": "Approach",
         "nav.contact": "Contact",
         "hero.eyebrow": "Independent software & design studio",
-        "hero.w1": "Simple.",
-        "hero.w2": "Never",
-        "hero.w3": "ordinary.",
+        "hero.w1": "The rest",
+        "hero.w2": "is noise.",
         "hero.lead": "We strip away the noise and keep what matters. We run every step from idea to launch and rewrite the rules when they get in the way.",
         "hero.cta1": "Get in touch",
         "hero.cta2": "How we work",
@@ -74,7 +70,7 @@ const I18N = {
         "contact.email": "Email",
         "contact.note": "We reply to every message within one business day.",
         "footer.privacy": "Privacy",
-        "footer.tagline": "Simple. Never ordinary.",
+        "footer.tagline": "The rest is noise.",
         "footer.nav": "Navigate",
         "footer.follow": "Follow along",
         "footer.top": "Back to top ↑",
@@ -86,17 +82,15 @@ const I18N = {
         "e404.cta": "Back to home"
     },
     fr: {
-        "meta.description": "Studio indépendant de logiciel et de design attaché à l'esthétique. Nous menons tout le processus et créons des produits simples, jamais ordinaires.",
+        "meta.description": "Studio indépendant de logiciel et de design attaché à l'esthétique. Nous retirons le bruit et gardons l'essentiel.",
         "nav.menu": "Menu",
-        "clock.place": "Heure à Istanbul",
         "manifesto.label": "Manifeste",
         "nav.studio": "Studio",
         "nav.approach": "Approche",
         "nav.contact": "Contact",
         "hero.eyebrow": "Studio indépendant de logiciel et de design",
-        "hero.w1": "Simple.",
-        "hero.w2": "Jamais",
-        "hero.w3": "ordinaire.",
+        "hero.w1": "Le reste",
+        "hero.w2": "n’est que bruit.",
         "hero.lead": "Nous retirons le bruit et gardons l'essentiel. Nous menons chaque étape, de l'idée au lancement, et réécrivons les règles quand elles gênent.",
         "hero.cta1": "Écrivez-nous",
         "hero.cta2": "Notre méthode",
@@ -116,7 +110,7 @@ const I18N = {
         "contact.email": "E-mail",
         "contact.note": "Nous répondons à chaque message sous un jour ouvré.",
         "footer.privacy": "Confidentialité",
-        "footer.tagline": "Simple. Jamais ordinaire.",
+        "footer.tagline": "Le reste n’est que bruit.",
         "footer.nav": "Navigation",
         "footer.follow": "Suivez-nous",
         "footer.top": "Haut de page ↑",
@@ -264,26 +258,6 @@ const inkWords = (function () {
     return { rebuild, update };
 })();
 
-const clock = (function () {
-    const timeEl = document.querySelector("[data-clock-time]");
-    if (!timeEl) return { render: function () {} };
-
-    function render() {
-        let text;
-        try {
-            text = new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date());
-        } catch (e) {
-            const now = new Date();
-            text = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
-        }
-        timeEl.textContent = text;
-    }
-
-    render();
-    setInterval(render, 20000);
-    return { render };
-})();
-
 const LANG_LABELS = { tr: "TR", en: "EN", fr: "FR" };
 
 function applyLang(lang) {
@@ -313,7 +287,6 @@ function applyLang(lang) {
         btn.classList.toggle("active", btn.dataset.lang === lang);
     });
     inkWords.rebuild();
-    clock.render();
     storeLang(lang);
 }
 

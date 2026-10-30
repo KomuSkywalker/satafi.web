@@ -566,12 +566,6 @@ body.ready .intro {
     margin-bottom: 22px;
 }
 
-.hero-clock b {
-    font-weight: 600;
-    color: var(--paper);
-    font-variant-numeric: tabular-nums;
-}
-
 .hero-title {
     display: flex;
     flex-direction: column;
@@ -580,11 +574,15 @@ body.ready .intro {
 
 .hero-big {
     --d: 0.2s;
-    font-size: clamp(96px, 13vw, 240px);
+    font-size: clamp(72px, 8vw, 160px);
     font-weight: 800;
     font-stretch: 72%;
     line-height: 0.86;
     letter-spacing: -0.01em;
+}
+
+.hero-line {
+    display: block;
 }
 
 .hero-sub {
@@ -1191,7 +1189,7 @@ html[lang="fr"] [data-lang-block="fr"] {
     }
 
     .hero-big {
-        font-size: 24vw;
+        font-size: 17vw;
     }
 
     .hero-sub {
