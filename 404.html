@@ -2,27 +2,26 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Satafi Studio</title>
     <meta name="robots" content="noindex">
-    <meta name="theme-color" content="#050505">
-    <link rel="stylesheet" href="/style.css?v=11">
+    <meta name="theme-color" content="#0b0b0c">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap">
+    <link rel="stylesheet" href="/style.css?v=15">
     <link rel="icon" type="image/svg+xml" href="/assets/satafi-icon.svg?v=2">
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/satafi-icon-512.png?v=2">
     <link rel="apple-touch-icon" href="/assets/satafi-icon-512.png?v=2">
 </head>
 <body>
 
-    <header class="topbar" data-navbar>
-        <div class="topbar-inner">
-            <a href="/" class="brand" aria-label="Satafi Studio">
-                <img src="/assets/satafi-icon-mark.svg" alt="" class="brand-logo">
-                <span class="brand-text"><b>Satafi</b> Studio</span>
-            </a>
-            <nav class="top-links" aria-label="Ana menü">
-                <a href="/#yaklasim" data-i18n="nav.approach">Yaklaşım</a>
-                <a href="/#iletisim" data-i18n="nav.contact">İletişim</a>
-            </nav>
+    <header class="topbar" data-topbar>
+        <a href="/#ust" class="brand" aria-label="Satafi Studio">
+            <span class="brand-logo" aria-hidden="true"></span>
+            <span class="brand-name">Satafi Studio</span>
+        </a>
+        <div class="topbar-right">
             <div class="lang-menu" data-lang-menu>
                 <button type="button" class="lang-current" data-lang-toggle aria-haspopup="true" aria-expanded="false" aria-label="Dil seçimi">
                     <span data-lang-current>TR</span>
@@ -34,28 +33,61 @@
                     <button type="button" data-lang="fr">Français</button>
                 </div>
             </div>
+            <button type="button" class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="menu">
+                <span data-i18n="nav.menu">Menü</span>
+                <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+            </button>
         </div>
     </header>
 
+    <div class="menu" id="menu" data-menu aria-hidden="true">
+        <nav class="menu-links" aria-label="Ana menü">
+            <a href="/#ust" data-menu-link><span class="menu-no" aria-hidden="true">01</span><span data-i18n="nav.studio">Stüdyo</span></a>
+            <a href="/#yaklasim" data-menu-link><span class="menu-no" aria-hidden="true">02</span><span data-i18n="nav.approach">Yaklaşım</span></a>
+            <a href="/#iletisim" data-menu-link><span class="menu-no" aria-hidden="true">03</span><span data-i18n="nav.contact">İletişim</span></a>
+        </nav>
+        <div class="menu-side">
+            <div class="menu-block">
+                <p class="label" data-i18n="contact.email">E-posta</p>
+                <a href="mailto:satafi.software@gmail.com">satafi.software@gmail.com</a>
+            </div>
+            <div class="menu-block">
+                <p class="label">Instagram</p>
+                <a href="https://instagram.com/satafi.studio" target="_blank" rel="noopener">@satafi.studio</a>
+            </div>
+            <div class="menu-block menu-langs">
+                <button type="button" data-lang="tr" class="active">Türkçe</button>
+                <button type="button" data-lang="en">English</button>
+                <button type="button" data-lang="fr">Français</button>
+            </div>
+        </div>
+    </div>
+
     <main>
-        <section class="hero">
-            <div class="aurora aurora-warm"></div>
-            <div class="aurora aurora-cool"></div>
-            <div class="hero-inner">
-                <p class="eyebrow intro-step" data-i18n="e404.eyebrow">Hata 404</p>
-                <h1 class="staccato">
-                    <span class="word dim" data-i18n="e404.w1">Burada</span>
-                    <span class="word" data-i18n="e404.w2">bir şey yok.</span>
-                </h1>
-                <p class="hero-lead intro-step" data-i18n="e404.lead">Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir.</p>
-                <div class="hero-actions intro-step">
-                    <a href="/" class="btn btn-solid" data-magnetic data-i18n="e404.cta">Ana sayfaya dönün</a>
+        <section class="hero hero-404" data-theme="dark">
+            <div class="smoke" data-smoke aria-hidden="true">
+                <div class="smoke-layer"></div>
+                <div class="smoke-layer"></div>
+                <div class="smoke-red"></div>
+            </div>
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="hero-meta intro">
+                        <p class="label" data-i18n="e404.eyebrow">Hata 404</p>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="hero-big intro" data-i18n="e404.w1">Burada</span>
+                        <span class="hero-sub intro" data-i18n="e404.w2">bir şey yok.</span>
+                    </h1>
+                    <p class="hero-lead intro" data-i18n="e404.lead">Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir.</p>
+                    <div class="hero-actions intro">
+                        <a href="/" class="btn btn-paper" data-i18n="e404.cta">Ana sayfaya dönün</a>
+                    </div>
                 </div>
             </div>
-            <div class="hero-horizon" aria-hidden="true"></div>
         </section>
     </main>
 
-    <script src="/script.js?v=13"></script>
+    <script src="/script.js?v=17"></script>
 </body>
 </html>

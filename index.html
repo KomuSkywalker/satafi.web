@@ -2,12 +2,15 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Satafi Studio</title>
-    <meta name="description" content="Estetiğe önem veren bağımsız yazılım ve tasarım stüdyosu. Süreci baştan sona yönetir, sade ama sıradan olmayan ürünler yaparız.">
-    <meta name="theme-color" content="#050505">
+    <meta name="description" data-i18n-meta content="Estetiğe önem veren bağımsız yazılım ve tasarım stüdyosu. Süreci baştan sona yönetir, sade ama sıradan olmayan ürünler yaparız.">
+    <meta name="theme-color" content="#0b0b0c">
     <meta name="google-site-verification" content="sG7kLxDNFCGQWcGE8m8eazRZnTvGlxe7AIGOr9QVH6I">
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&display=swap">
+    <link rel="stylesheet" href="style.css?v=15">
 
     <link rel="icon" type="image/svg+xml" href="assets/satafi-icon.svg?v=2">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/satafi-icon-512.png?v=2">
@@ -35,19 +38,16 @@
         "sameAs": ["https://instagram.com/satafi.studio"]
     }
     </script>
+    <noscript><style>.intro,[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
-    <header class="topbar" data-navbar>
-        <div class="topbar-inner">
-            <a href="#ust" class="brand" aria-label="Satafi Studio">
-                <img src="assets/satafi-icon-mark.svg" alt="" class="brand-logo">
-                <span class="brand-text"><b>Satafi</b> Studio</span>
-            </a>
-            <nav class="top-links" aria-label="Ana menü">
-                <a href="#yaklasim" data-i18n="nav.approach">Yaklaşım</a>
-                <a href="#iletisim" data-i18n="nav.contact">İletişim</a>
-            </nav>
+    <header class="topbar" data-topbar>
+        <a href="#ust" class="brand" aria-label="Satafi Studio">
+            <span class="brand-logo" aria-hidden="true"></span>
+            <span class="brand-name">Satafi Studio</span>
+        </a>
+        <div class="topbar-right">
             <div class="lang-menu" data-lang-menu>
                 <button type="button" class="lang-current" data-lang-toggle aria-haspopup="true" aria-expanded="false" aria-label="Dil seçimi">
                     <span data-lang-current>TR</span>
@@ -59,90 +59,192 @@
                     <button type="button" data-lang="fr">Français</button>
                 </div>
             </div>
+            <button type="button" class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="menu">
+                <span data-i18n="nav.menu">Menü</span>
+                <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+            </button>
         </div>
     </header>
 
-    <main id="ust">
+    <div class="menu" id="menu" data-menu aria-hidden="true">
+        <nav class="menu-links" aria-label="Ana menü">
+            <a href="#ust" data-menu-link><span class="menu-no" aria-hidden="true">01</span><span data-i18n="nav.studio">Stüdyo</span></a>
+            <a href="#yaklasim" data-menu-link><span class="menu-no" aria-hidden="true">02</span><span data-i18n="nav.approach">Yaklaşım</span></a>
+            <a href="#iletisim" data-menu-link><span class="menu-no" aria-hidden="true">03</span><span data-i18n="nav.contact">İletişim</span></a>
+        </nav>
+        <div class="menu-side">
+            <div class="menu-block">
+                <p class="label" data-i18n="contact.email">E-posta</p>
+                <a href="mailto:satafi.software@gmail.com">satafi.software@gmail.com</a>
+            </div>
+            <div class="menu-block">
+                <p class="label">Instagram</p>
+                <a href="https://instagram.com/satafi.studio" target="_blank" rel="noopener">@satafi.studio</a>
+            </div>
+            <div class="menu-block menu-langs">
+                <button type="button" data-lang="tr" class="active">Türkçe</button>
+                <button type="button" data-lang="en">English</button>
+                <button type="button" data-lang="fr">Français</button>
+            </div>
+        </div>
+    </div>
 
-        <section class="hero">
-            <div class="aurora aurora-warm"></div>
-            <div class="aurora aurora-cool"></div>
-            <canvas class="embers" data-embers aria-hidden="true"></canvas>
-            <div class="hero-inner">
-                <p class="eyebrow intro-step" data-i18n="hero.eyebrow">Bağımsız yazılım ve tasarım stüdyosu</p>
-                <h1 class="staccato">
-                    <span class="word" data-i18n="hero.w1">Sade.</span>
-                    <span class="word dim" data-i18n="hero.w2">Ama</span>
-                    <span class="word" data-i18n="hero.w3">sıradan değil.</span>
-                </h1>
-                <p class="hero-lead intro-step" data-i18n="hero.lead">Gürültüyü atar, işin özünü bırakırız. Fikirden yayına her adımı biz yönetir, gerektiğinde kuralları yeniden yazarız.</p>
-                <div class="hero-actions intro-step">
-                    <a href="#iletisim" class="btn btn-solid" data-magnetic data-i18n="hero.cta1">Bize yazın</a>
-                    <a href="#yaklasim" class="btn btn-line" data-magnetic data-i18n="hero.cta2">Nasıl çalışırız</a>
+    <main>
+
+        <section class="hero" id="ust" data-theme="dark">
+            <div class="smoke" data-smoke aria-hidden="true">
+                <div class="smoke-layer"></div>
+                <div class="smoke-layer"></div>
+                <div class="smoke-red"></div>
+            </div>
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="hero-meta intro">
+                        <p class="label" data-i18n="hero.eyebrow">Bağımsız yazılım ve tasarım stüdyosu</p>
+                        <p class="label hero-clock" data-clock><span data-i18n="clock.place">İstanbul'da saat</span> <b data-clock-time>00:00</b></p>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="hero-big intro" data-i18n="hero.w1">Sade.</span>
+                        <span class="hero-sub intro"><span data-i18n="hero.w2">Ama</span> <span data-i18n="hero.w3">sıradan değil.</span></span>
+                    </h1>
+                    <p class="hero-lead intro" data-i18n="hero.lead">Gürültüyü atar, işin özünü bırakırız. Fikirden yayına her adımı biz yönetir, gerektiğinde kuralları yeniden yazarız.</p>
+                    <div class="hero-actions intro">
+                        <a href="#iletisim" class="btn btn-paper" data-i18n="hero.cta1">Bize yazın</a>
+                        <a href="#yaklasim" class="btn btn-ghost" data-i18n="hero.cta2">Nasıl çalışırız</a>
+                    </div>
+                </div>
+                <div class="hero-visual intro" aria-hidden="true">
+                    <div class="hero-glow"></div>
+                    <div class="hero-bfly-float">
+                        <span class="bfly bfly-big">
+                            <span class="wing wing-l"></span>
+                            <span class="wing wing-r"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-horizon" aria-hidden="true"></div>
         </section>
 
-        <section class="manifesto" data-manifesto>
-            <p class="manifesto-text" data-manifesto-text></p>
-        </section>
-
-        <section class="approach" id="yaklasim">
-            <div class="section-head" data-reveal>
-                <p class="eyebrow" data-i18n="approach.eyebrow">Yaklaşım</p>
-                <h2 class="section-title" data-i18n="approach.title">Önce kural. Sonra kendi yolumuz.</h2>
+        <section class="manifesto" data-theme="light">
+            <div class="manifesto-inner">
+                <p class="label" data-i18n="manifesto.label">Manifesto</p>
+                <h2 class="manifesto-text" data-ink-words data-i18n="manifesto">İyi yazılım sessizdir. Gösterişle değil, güvenle konuşur. Biz o sessizliği tasarlıyoruz.</h2>
             </div>
-            <div class="card-grid">
-                <article class="glass-card" data-reveal data-tilt>
-                    <span class="card-no" aria-hidden="true">守</span>
+            <span class="bfly bfly-ink" aria-hidden="true">
+                <span class="wing wing-l"></span>
+                <span class="wing wing-r"></span>
+            </span>
+        </section>
+
+        <section class="approach" id="yaklasim" data-theme="light">
+            <p class="label" data-i18n="approach.eyebrow" data-reveal>Yaklaşım</p>
+            <h2 class="approach-title" data-reveal data-i18n="approach.title">Önce kural. Sonra kendi yolumuz.</h2>
+        </section>
+
+        <section class="chapter chapter-one" data-chapter="one" data-theme="light">
+            <div class="chapter-sticky">
+                <div class="chapter-text">
+                    <p class="chapter-no">01</p>
+                    <p class="step" aria-hidden="true"><i class="on"></i><i></i><i></i></p>
                     <h3 data-i18n="approach.c1t">Disiplin</h3>
-                    <p data-i18n="approach.c1p">Fikirden yayına tüm süreci tek elden yönetiriz. Kargaşaya yer yok: her adım planlı, her detay yerinde, her iş hakkıyla.</p>
-                </article>
-                <article class="glass-card" data-reveal data-tilt style="--reveal-delay: 0.1s;">
-                    <span class="card-no" aria-hidden="true">破</span>
-                    <h3 data-i18n="approach.c2t">Kural dışı</h3>
-                    <p data-i18n="approach.c2p">Herkes aynı yoldan gidiyorsa biz bir kez daha düşünürüz. Bir kural ürünü daha iyi yapmıyorsa, onu yıkmaktan çekinmeyiz.</p>
-                </article>
-                <article class="glass-card" data-reveal data-tilt style="--reveal-delay: 0.2s;">
-                    <span class="card-no" aria-hidden="true">離</span>
-                    <h3 data-i18n="approach.c3t">Ruhu olan sadelik</h3>
-                    <p data-i18n="approach.c3p">Japon sadeliğinden ilham alırız ama boşluğa teslim olmayız. Fazlalığı atar, geriye karakteri olan bir tasarım bırakırız.</p>
-                </article>
+                    <p class="chapter-body" data-i18n="approach.c1p">Fikirden yayına tüm süreci tek elden yönetiriz. Kargaşaya yer yok: her adım planlı, her detay yerinde, her iş hakkıyla.</p>
+                </div>
+                <div class="chapter-visual">
+                    <canvas data-grid-canvas aria-hidden="true"></canvas>
+                </div>
             </div>
         </section>
 
-        <section class="contact-frame" id="iletisim">
-            <div class="aurora aurora-warm aurora-small"></div>
-            <div class="contact-inner" data-reveal>
-                <p class="eyebrow" data-i18n="contact.eyebrow">İletişim</p>
-                <h2 class="contact-title" data-i18n="contact.title">Dağınık bir fikir mi? Getirin.</h2>
-                <p class="contact-lead" data-i18n="contact.lead">Henüz net olması gerekmiyor. Kargaşayı toparlamak bizim işimiz. Bir ürün, bir soru ya da sadece merhaba, yazın.</p>
-                <div class="contact-rows">
-                    <a class="contact-row" href="mailto:satafi.software@gmail.com">
-                        <span class="row-label" data-i18n="contact.email">E-posta</span>
-                        <span class="row-value">satafi.software@gmail.com</span>
-                        <span class="row-arrow" aria-hidden="true">↗</span>
-                    </a>
-                    <a class="contact-row" href="https://instagram.com/satafi.studio" target="_blank" rel="noopener">
-                        <span class="row-label">Instagram</span>
-                        <span class="row-value">@satafi.studio</span>
-                        <span class="row-arrow" aria-hidden="true">↗</span>
-                    </a>
+        <section class="chapter chapter-two" data-chapter="two" data-theme="dark">
+            <div class="chapter-sticky">
+                <div class="chapter-text">
+                    <p class="chapter-no">02</p>
+                    <p class="step" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></p>
+                    <h3 data-i18n="approach.c2t">Kural dışı</h3>
+                    <p class="chapter-body" data-i18n="approach.c2p">Herkes aynı yoldan gidiyorsa biz bir kez daha düşünürüz. Bir kural ürünü daha iyi yapmıyorsa, onu yıkmaktan çekinmeyiz.</p>
                 </div>
-                <p class="contact-note" data-i18n="contact.note">Her mesaja en geç bir iş günü içinde dönüyoruz.</p>
+                <div class="chapter-visual burn-visual">
+                    <div class="burn-under" aria-hidden="true">
+                        <span class="bfly bfly-ember">
+                            <span class="wing wing-l"></span>
+                            <span class="wing wing-r"></span>
+                        </span>
+                    </div>
+                    <canvas data-burn aria-hidden="true"></canvas>
+                </div>
             </div>
+        </section>
+
+        <section class="chapter chapter-three" data-chapter="three" data-theme="dark">
+            <div class="chapter-sticky">
+                <div class="chapter-text">
+                    <p class="chapter-no">03</p>
+                    <p class="step" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></p>
+                    <h3 data-i18n="approach.c3t">Ruhu olan sadelik</h3>
+                    <p class="chapter-body" data-i18n="approach.c3p">Japon sadeliğinden ilham alırız ama boşluğa teslim olmayız. Fazlalığı atar, geriye karakteri olan bir tasarım bırakırız.</p>
+                </div>
+                <div class="chapter-visual">
+                    <canvas data-vortex aria-hidden="true"></canvas>
+                    <div class="flock" data-flock aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="iletisim" data-theme="light">
+            <p class="label" data-i18n="contact.eyebrow" data-reveal>İletişim</p>
+            <h2 class="contact-title" data-reveal data-split data-i18n="contact.title">Dağınık bir fikir mi? Getirin.</h2>
+            <p class="contact-lead" data-reveal data-split data-i18n="contact.lead">Henüz net olması gerekmiyor. Kargaşayı toparlamak bizim işimiz. Bir ürün, bir soru ya da sadece merhaba, yazın.</p>
+            <div class="contact-rows" data-reveal>
+                <a class="contact-row" href="mailto:satafi.software@gmail.com">
+                    <span class="label" data-i18n="contact.email">E-posta</span>
+                    <span class="contact-value">satafi.software@gmail.com</span>
+                    <span class="contact-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="contact-row" href="https://instagram.com/satafi.studio" target="_blank" rel="noopener">
+                    <span class="label">Instagram</span>
+                    <span class="contact-value">@satafi.studio</span>
+                    <span class="contact-arrow" aria-hidden="true">↗</span>
+                </a>
+            </div>
+            <p class="label contact-note" data-reveal data-i18n="contact.note">Her mesaja en geç bir iş günü içinde dönüyoruz.</p>
         </section>
 
     </main>
 
-    <footer class="footer">
-        <span class="brand-text"><b>Satafi</b> Studio</span>
-        <a href="gizlilik.html" class="footer-link" data-i18n="footer.privacy">Gizlilik</a>
-        <span data-i18n="footer.rights">© 2026 Satafi Studio. Tüm hakları saklıdır.</span>
+    <footer class="footer" data-theme="dark">
+        <canvas class="ink-pool" data-ink-pool aria-hidden="true"></canvas>
+        <div class="footer-inner">
+            <div class="footer-mark">
+                <span class="bfly bfly-footer" aria-hidden="true">
+                    <span class="wing wing-l"></span>
+                    <span class="wing wing-r"></span>
+                </span>
+                <p class="footer-name">Satafi Studio</p>
+                <p class="footer-tagline" data-i18n="footer.tagline">Sade. Ama sıradan değil.</p>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <p class="label" data-i18n="footer.nav">Gezinti</p>
+                    <a href="#ust" data-i18n="nav.studio">Stüdyo</a>
+                    <a href="#yaklasim" data-i18n="nav.approach">Yaklaşım</a>
+                    <a href="#iletisim" data-i18n="nav.contact">İletişim</a>
+                </div>
+                <div class="footer-col">
+                    <p class="label" data-i18n="footer.follow">Takip edin</p>
+                    <a href="https://instagram.com/satafi.studio" target="_blank" rel="noopener">Instagram</a>
+                    <a href="mailto:satafi.software@gmail.com" data-i18n="contact.email">E-posta</a>
+                </div>
+                <div class="footer-col">
+                    <p class="label">Satafi Studio</p>
+                    <a href="gizlilik.html" data-i18n="footer.privacy">Gizlilik</a>
+                    <a href="#ust" data-i18n="footer.top">Başa dön ↑</a>
+                </div>
+            </div>
+            <p class="label footer-rights" data-i18n="footer.rights">© 2026 Satafi Studio. Tüm hakları saklıdır.</p>
+        </div>
     </footer>
 
     <script data-goatcounter="https://satafi.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-    <script src="script.js?v=13"></script>
+    <script src="script.js?v=17"></script>
 </body>
 </html>
